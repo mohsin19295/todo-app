@@ -1,6 +1,6 @@
 import { ApolloServer } from "@apollo/server"
 import { typeDefs } from "./typeDefs"
-import { resolvers } from "./resolvers"
+import { resolvers } from "./resolvers/todoResolvers"
 import { startServerAndCreateNextHandler } from "@as-integrations/next"
 import { dbConnet } from "@/lib/db"
 
