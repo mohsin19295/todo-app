@@ -9,7 +9,10 @@ export const dbConnet = async () => {
     if(isConnected) return;
 
     try {
-        await mongoose.connect(MONGO_URI);
+        await mongoose.connect(MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        });
         isConnected = true;
         console.log('mongoDB connected successfully!')
     } catch (error) {

@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme{
+  --color-light-bg: rgba(255, 255, 255, 0.08);
+  --color-dark-bg: rgba(255, 255, 255, 0.010);
+  --color-btn-hover: rgba(255, 255, 255, 0.20);
+  --color-light-border: rgba(255, 255, 255, 0.2);
+  --color-dark-border: rgba(255, 255, 255, 0.3);
+  --shadow-custom: 0 8px 32px rgba(0, 0, 0, 0.302);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-shadow{
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.302);
 }
 
 @media (prefers-color-scheme: dark) {
