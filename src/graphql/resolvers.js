@@ -1,3 +1,4 @@
+import Task from "@/models/Task";
 import Todo from "@/models/Todo"
 
 export const resolvers = {
@@ -14,6 +15,20 @@ export const resolvers = {
                 return await Todo.findById(id);
             } catch (error) {
                 throw new Error('Failed to fetch todo');
+            }
+        },
+         getTasks: async() => {
+            try {
+                return await Task.find()
+            } catch (error) {
+                throw new Error('Failed to fetch tasks');
+            }
+        },
+        getTask: async(_, {id}) => {
+            try {
+                return await Task.findById(id)
+            } catch (error) {
+                throw new Error('Failed to fetch task');
             }
         }
     },
@@ -52,6 +67,31 @@ export const resolvers = {
                 return await todo.save();
             } catch (error) {
                 throw new Error('Failed to toggle todo');
+            }
+        },
+        addTask: async (_, {title, status, description, priority, dueDate, assignee}) => {
+            try {
+                const newTask = new Task({title, status, description, priority, dueDate: dueDate ? new Date(dueDate) : undefined, assignee})
+                return await newTask.save()
+            } catch (error) {
+                throw new Error('Failed to add task');
+            }
+        },
+        updateTask: async (_, {id, title, status, description, priority, dueDate, assignee}) => {
+            try {
+                const updatedTask = await Task.findByIdAndUpdate(id, {title, status, description, priority, dueDate: dueDate ? new Date(dueDate) : undefined, assignee}, {new: true})
+                if (!updatedTask) throw new Error('Task not found');
+                return updatedTask;
+            } catch (error) {
+                throw new Error('Failed to update task');
+            }
+        },
+        deleteTask: async(_, {id}) => {
+            try {
+                const deletedTask = await Task.findByIdAndDelete(id);
+                return !!deletedTask;
+            } catch (error) {
+                throw new Error('Failed to delete task');
             }
         }
     }

@@ -7,18 +7,6 @@ export const typeDefs = gql`
         completed: Boolean!
     }
 
-    type Query {
-        getTodos: [Todo!]!,
-        getTodo(id: ID!): Todo
-    }
-
-    type Mutation {
-        addTodo(title: String!): Todo!,
-        deleteTodo(id: ID!): Boolean!,
-        updateTodo(id: ID!, title: String!): Todo!,
-        toggleTodo(id: ID!): Todo!
-    }
-
     type Task {
         id: ID!
         title: String!
@@ -30,11 +18,19 @@ export const typeDefs = gql`
     }
 
     type Query {
+        getTodos: [Todo!]!,
+        getTodo(id: ID!): Todo
+
         getTasks: [Task!]!
         getTask(id: ID!): Task
     }
 
     type Mutation {
+        addTodo(title: String!): Todo!,
+        deleteTodo(id: ID!): Boolean!,
+        updateTodo(id: ID!, title: String!): Todo!,
+        toggleTodo(id: ID!): Todo!
+
         addTask(
             title: String!
             description: String

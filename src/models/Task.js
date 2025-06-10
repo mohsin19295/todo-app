@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import {v4 as uuidv4} from "uuid"
 
 const TaskSchema = new mongoose.Schema({
-    id: {type: String, default: uuidv4, unique: true},
+    // id: {type: String, default: uuidv4, unique: true},
     title: {type: String, required: true},
     description: String,
     status: {type: String, enum: ["To Do", "In Progress", "Done"], required: true},
