@@ -67,6 +67,7 @@ export const UPDATE_TASK = gql`
         $assignee: String 
     ){
         updateTask(
+            id: $id,
             title: $title, 
             description: $description, 
             status: $status, 
