@@ -55,3 +55,38 @@ export const ADD_TASK = gql`
         }
     }
 `
+
+export const UPDATE_TASK = gql`
+    mutation UpdateTask(
+        $id: ID!,
+        $title: String!, 
+        $description: String, 
+        $status: String!, 
+        $priority: String!, 
+        $dueDate: String, 
+        $assignee: String 
+    ){
+        updateTask(
+            title: $title, 
+            description: $description, 
+            status: $status, 
+            priority: $priority, 
+            dueDate: $dueDate, 
+            assignee: $assignee
+        ){
+            id,
+            title,
+            description,
+            status,
+            priority,
+            dueDate,
+            assignee
+        }
+    }
+`
+
+export const DELETE_TASK = gql`
+    mutation DeleteTask($id: ID!){
+        deleteTask(id: $id)
+    }
+`

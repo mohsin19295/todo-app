@@ -64,7 +64,6 @@ export default function Todos() {
   };
 
   return (
-    <main className="flex justify-center items-center w-full h-screen bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white">
       <div className='border border-light-border bg-light-bg hover:bg-dark-bg shadow-custom-shadow w-[94%] max-w-[768px] h-[90%] sm:p-6 p-4 rounded-xl backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300'>
         <form onSubmit={handleSubmit} className='mb-4'>
         <div className='sm:w-1/2 w-full flex m-auto gap-4'>
@@ -72,7 +71,7 @@ export default function Todos() {
             type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder='Add new task...'
+            placeholder='Add new todo...'
             className='w-full px-4 py-2 rounded-md outline-none bg-dark-bg transition-all border border-dark-border focus:ring-1 focus:ring-white/50 focus:border-white/40 shadow-sm'
             />
             <button 
@@ -83,11 +82,11 @@ export default function Todos() {
         </div>
         </form>
 
-        {addState.error && <p style={{ color: 'red' }}>Add Error: {addState.error.message}</p>}
-        {updateState.error && <p style={{ color: 'red' }}>Update Error: {updateState.error.message}</p>}
-        {deleteState.error && <p style={{ color: 'red' }}>Delete Error: {deleteState.error.message}</p>}
+        {addState.error && <p className="text-red-500">Add Error: {addState.error.message}</p>}
+        {updateState.error && <p className="text-red-500">Update Error: {updateState.error.message}</p>}
+        {deleteState.error && <p className="text-red-500">Delete Error: {deleteState.error.message}</p>}
         <ul className={`scrollbar-custom border border-dark-border bg-dark-bg hover:bg-light-bg transition-all w-full max-h-[89%] m-auto sm:p-4 p-2 rounded-md flex flex-col gap-2 overflow-y-auto`}>
-          {(error) && <p style={{ color: 'red' }}>{error.message}</p>}
+          {(error) && <p className="text-red-500">{error.message}</p>}
           {
             loading ? <div className='text-center text-sm opacity-60'><p>Loading...</p></div> :
             data?.getTodos?.length === 0 ? <p className='text-center text-sm opacity-60'>No data available.</p> :
@@ -114,6 +113,5 @@ export default function Todos() {
           }
         </ul>
       </div>
-     </main>
   );
 }
