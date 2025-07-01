@@ -13,15 +13,6 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
                 <p className="text-sm text-white/80 mb-4 italic">{task.description}</p>
             )}
 
-            {
-                task.dueDate && (
-                    <div className="flex justify-between text-sm text-white/70 mb-5">
-                        <span className="block text-white/80 font-semibold mb-1">📅 Due Date</span>
-                        {task.dueDate || "N/A"}
-                    </div>
-                )
-            }
-
             <div className="flex justify-between items-center">
                 <select
                     value={task.status}

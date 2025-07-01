@@ -37,7 +37,6 @@ export default function Filters({ filters, onFilterChange, onSortChange }) {
         >
           <option value="">Sort By</option>
           <option value="priority">📌 Priority</option>
-          <option value="dueDate">📅 Due Date</option>
         </select>
       </div>
     </div>

@@ -6,7 +6,7 @@ import Modal from "../components/Modal";
 import Filters from "../components/Filters";
 import StatusColumn from "../components/StatusColumn";
 
-const initialState = { title: "", description: "", status: "To Do", priority: "Low", dueDate: "", assignee: "" };
+const initialState = { title: "", description: "", status: "To Do", priority: "Low", assignee: "" };
 
 export default function Tasks() {
   const [formState, setFormState] = useState(initialState);
@@ -62,7 +62,6 @@ export default function Tasks() {
     if (sortKey) {
       result = [...result].sort((a, b) => {
         if (sortKey === "priority") return a.priority.localeCompare(b.priority);
-        if (sortKey === "dueDate") return new Date(a.dueDate) - new Date(b.dueDate);
         return 0;
       });
     }
@@ -99,7 +98,6 @@ export default function Tasks() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input type="text" placeholder="Title" value={formState.title} onChange={(e) => setFormState({ ...formState, title: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
           <input type="text" placeholder="Description" value={formState.description} onChange={(e) => setFormState({ ...formState, description: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
-          <input type="date" value={formState.dueDate} onChange={(e) => setFormState({ ...formState, dueDate: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
           <select value={formState.priority} onChange={(e) => setFormState({ ...formState, priority: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white">
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>

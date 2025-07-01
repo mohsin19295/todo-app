@@ -8,7 +8,6 @@ export const GET_TASKS = gql`
             description,
             status,
             priority,
-            dueDate,
             assignee
         }
     }
@@ -22,7 +21,6 @@ export const GET_TASK = gql`
             description,
             status,
             priority,
-            dueDate,
             assignee
         }
     }
@@ -34,7 +32,6 @@ export const ADD_TASK = gql`
         $description: String, 
         $status: String!, 
         $priority: String!, 
-        $dueDate: String, 
         $assignee: String
         ){
         addTask(
@@ -42,7 +39,6 @@ export const ADD_TASK = gql`
             description: $description,
             status: $status,
             priority: $priority,
-            dueDate: $dueDate,
             assignee: $assignee
         ){
             id,
@@ -50,7 +46,6 @@ export const ADD_TASK = gql`
             description,
             status,
             priority,
-            dueDate,
             assignee
         }
     }
@@ -63,7 +58,6 @@ export const UPDATE_TASK = gql`
         $description: String, 
         $status: String!, 
         $priority: String!, 
-        $dueDate: String, 
         $assignee: String 
     ){
         updateTask(
@@ -72,7 +66,6 @@ export const UPDATE_TASK = gql`
             description: $description, 
             status: $status, 
             priority: $priority, 
-            dueDate: $dueDate, 
             assignee: $assignee
         ){
             id,
@@ -80,7 +73,6 @@ export const UPDATE_TASK = gql`
             description,
             status,
             priority,
-            dueDate,
             assignee
         }
     }

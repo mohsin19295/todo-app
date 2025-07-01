@@ -13,7 +13,6 @@ export const typeDefs = gql`
         description: String
         status: String!
         priority: String!
-        dueDate: String
         assignee: String
     }
 
@@ -36,7 +35,6 @@ export const typeDefs = gql`
             description: String
             status: String!
             priority: String!
-            dueDate: String
             assignee: String
         ): Task!
 
@@ -46,7 +44,6 @@ export const typeDefs = gql`
             description: String
             status: String!
             priority: String!
-            dueDate: String
             assignee: String
         ): Task!
 
