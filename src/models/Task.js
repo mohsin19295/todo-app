@@ -7,7 +7,8 @@ const TaskSchema = new mongoose.Schema({
     description: String,
     status: {type: String, enum: ["To Do", "In Progress", "Done"], required: true},
     priority: {type: String, enum: ["Low", "Medium", "High"], required: true},
-    assignee: String
+    assignee: String,
+    dueDays: String
 })
 
 export default mongoose.models.Task || mongoose.model('Task', TaskSchema)

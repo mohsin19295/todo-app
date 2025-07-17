@@ -1,4 +1,3 @@
-// "use client";
 export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
     return (
         <div className="bg-light-bg p-5 rounded-xl text-white mb-5 shadow-lg border border-dark-border transition-all hover:shadow-xl">
@@ -14,6 +13,14 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
             )}
 
             <div className="flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                  {task.dueDays && (
+                    <div className="inline-flex items-center gap-2 text-xs text-white/70 bg-dark-bg border border-dark-border px-3 py-1 rounded">
+                        <span>⏰</span>
+                        <span>{task.dueDays} day{task.dueDays > 1 ? "s" : ""} left</span>
+                    </div>
+                )}
+
                 <select
                     value={task.status}
                     onChange={(e) => onStatusChange(task.id, e.target.value)}
@@ -23,17 +30,18 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
                     <option value="In Progress">🟡 In Progress</option>
                     <option value="Done">✅ Done</option>
                 </select>
+              </div>
 
                 <div className="flex gap-3">
                     <button
                         onClick={() => onEdit(task)}
-                        className="text-sm text-blue-400 hover:text-blue-300"
+                        className="text-sm text-blue-400 hover:text-blue-300 cursor-pointer"
                     >
                         ✏️ Edit
                     </button>
                     <button
                         onClick={() => onDelete(task.id)}
-                        className="text-sm text-red-400 hover:text-red-300"
+                        className="text-sm text-red-400 hover:text-red-300 cursor-pointer"
                     >
                         🗑️ Delete
                     </button>

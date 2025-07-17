@@ -14,6 +14,7 @@ export const typeDefs = gql`
         status: String!
         priority: String!
         assignee: String
+        dueDays: String
     }
 
     type Query {
@@ -36,6 +37,7 @@ export const typeDefs = gql`
             status: String!
             priority: String!
             assignee: String
+            dueDays: String
         ): Task!
 
         updateTask(
@@ -45,6 +47,7 @@ export const typeDefs = gql`
             status: String!
             priority: String!
             assignee: String
+            dueDays:  String
         ): Task!
 
         deleteTask(id: ID!): Boolean!

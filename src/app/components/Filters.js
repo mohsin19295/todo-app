@@ -1,4 +1,3 @@
-// "use client";
 export default function Filters({ filters, onFilterChange, onSortChange }) {
   const selectStyle =
     "px-4 py-2 rounded-lg bg-dark-bg text-white border border-dark-border shadow-sm outline-none hover:bg-dark-bg/90 focus:ring-2 focus:ring-blue-500 transition-all duration-150";

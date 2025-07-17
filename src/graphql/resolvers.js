@@ -69,17 +69,17 @@ export const resolvers = {
                 throw new Error('Failed to toggle todo');
             }
         },
-        addTask: async (_, {title, status, description, priority, assignee}) => {
+        addTask: async (_, {title, status, description, priority, assignee, dueDays}) => {
             try {
-                const newTask = new Task({title, status, description, priority, assignee})
+                const newTask = new Task({title, status, description, priority, assignee, dueDays})
                 return await newTask.save()
             } catch (error) {
                 throw new Error('Failed to add task');
             }
         },
-        updateTask: async (_, {id, title, status, description, priority, assignee}) => {
+        updateTask: async (_, {id, title, status, description, priority, assignee, dueDays}) => {
             try {
-                const updatedTask = await Task.findByIdAndUpdate(id, {title, status, description, priority, assignee}, {new: true})
+                const updatedTask = await Task.findByIdAndUpdate(id, {title, status, description, priority, assignee, dueDays}, {new: true})
                 if (!updatedTask) throw new Error('Task not found');
                 return updatedTask;
             } catch (error) {

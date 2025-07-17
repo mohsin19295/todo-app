@@ -1,4 +1,3 @@
-// "use client";
 import TaskCard from "./TaskCard";
 
 export default function StatusColumn({ status, tasks, onEdit, onDelete, onStatusChange }) {

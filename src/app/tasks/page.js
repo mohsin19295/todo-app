@@ -6,7 +6,7 @@ import Modal from "../components/Modal";
 import Filters from "../components/Filters";
 import StatusColumn from "../components/StatusColumn";
 
-const initialState = { title: "", description: "", status: "To Do", priority: "Low", assignee: "" };
+const initialState = { title: "", description: "", status: "To Do", priority: "Low", assignee: "", dueDays: "" };
 
 export default function Tasks() {
   const [formState, setFormState] = useState(initialState);
@@ -34,6 +34,15 @@ export default function Tasks() {
       console.error("Submit error", err);
     }
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
 
   const handleEdit = (task) => {
     setEdit(task);
@@ -68,12 +77,6 @@ export default function Tasks() {
     return result;
   };
 
-  const groupedTasks = (data?.getTasks ? applyFiltersAndSort(data.getTasks) : []).reduce((acc, task) => {
-    acc[task.status] = acc[task.status] || [];
-    acc[task.status].push(task);
-    return acc;
-  }, {});
-
   return (
     <div className="p-6 w-full max-w-[1280px] mx-auto">
       <div className="flex justify-end mb-4">
@@ -85,31 +88,32 @@ export default function Tasks() {
       <Filters filters={filters} onFilterChange={handleFilterChange} onSortChange={handleSortChange} />
 
       <div className="mt-6">
-          <StatusColumn
+        <StatusColumn
           status="Tasks"
           tasks={applyFiltersAndSort(data?.getTasks || [])}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onStatusChange={handleStatusChange}
-          />
+        />
       </div>
 
       <Modal isOpen={isOpen} onClose={() => { setIsOpen(false); setFormState(initialState); setEdit(null); }}>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input type="text" placeholder="Title" value={formState.title} onChange={(e) => setFormState({ ...formState, title: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
-          <input type="text" placeholder="Description" value={formState.description} onChange={(e) => setFormState({ ...formState, description: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
-          <select value={formState.priority} onChange={(e) => setFormState({ ...formState, priority: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6">
+          <input type="text" placeholder="Title" name="title" value={formState.title} onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm" />
+          <input type="text" placeholder="Description" name="description" value={formState.description} onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm" />
+          <input type="text" placeholder="Due days" name="dueDays" value={formState.dueDays} onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm" />
+          <select value={formState.priority} name="priority" onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm">
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
-          <select value={formState.status} onChange={(e) => setFormState({ ...formState, status: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white">
+          <select value={formState.status} name="status" onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm">
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>
             <option value="Done">Done</option>
           </select>
-          <input type="text" placeholder="Assignee" value={formState.assignee} onChange={(e) => setFormState({ ...formState, assignee: e.target.value })} className="bg-dark-bg border border-dark-border px-4 py-2 rounded-md text-white" />
-          <button type="submit" className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md text-white">
+          <input type="text" placeholder="Assignee" name="assignee" value={formState.assignee} onChange={handleChange} className="bg-dark-bg border border-black/50 px-4 py-2 rounded-md text-black outline-none focus:ring-1 focus:ring-black/40 shadow-sm" />
+          <button type="submit" className="bg-gradient-to-br from-[#203a43] via-[#0f2027] to-[#2c5364] hover:from-[#2c5364] hover:via-[#0f2027] hover:to-[#203a43] px-4 py-2 rounded-md text-blue-600 outline-none shadow-sm cursor-pointer">
             {edit ? "Update" : "Add Task"}
           </button>
         </form>

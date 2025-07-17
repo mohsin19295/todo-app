@@ -3,6 +3,7 @@
 @theme{
   --color-light-bg: rgba(255, 255, 255, 0.08);
   --color-dark-bg: rgba(255, 255, 255, 0.05);
+  --color-btn-bg: rgba(255, 255, 255, 0.15);
   --color-btn-hover: rgba(255, 255, 255, 0.20);
   --color-light-border: rgba(255, 255, 255, 0.2);
   --color-dark-border: rgba(255, 255, 255, 0.3);
