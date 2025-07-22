@@ -31,6 +31,11 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.302);
 }
 
+select option {
+  color: black;
+  background-color: white;
+}
+
 
 /* nprogress.css override */
 #nprogress .bar {

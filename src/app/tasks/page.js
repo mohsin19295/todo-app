@@ -79,14 +79,7 @@ export default function Tasks() {
 
   return (
     <div className="p-6 w-full max-w-[1280px] mx-auto">
-      <div className="flex justify-end mb-4">
-        <button onClick={() => setIsOpen(true)} className="text-sm text-blue-400 hover:text-blue-300">
-          + Add Task
-        </button>
-      </div>
-
-      <Filters filters={filters} onFilterChange={handleFilterChange} onSortChange={handleSortChange} />
-
+    <Filters filters={filters} onFilterChange={handleFilterChange} onSortChange={handleSortChange} setIsOpen={setIsOpen} />
       <div className="mt-6">
         <StatusColumn
           status="Tasks"

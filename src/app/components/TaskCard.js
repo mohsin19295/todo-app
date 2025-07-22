@@ -24,7 +24,7 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
                 <select
                     value={task.status}
                     onChange={(e) => onStatusChange(task.id, e.target.value)}
-                    className="text-sm bg-dark-bg border border-dark-border rounded px-4 py-1 text-white outline-none"
+                    className="text-sm border border-dark-border rounded px-4 py-1 text-white outline-none cursor-pointer"
                 >
                     <option value="To Do">🟢 To Do</option>
                     <option value="In Progress">🟡 In Progress</option>

@@ -1,10 +1,15 @@
-export default function Filters({ filters, onFilterChange, onSortChange }) {
+export default function Filters({ filters, onFilterChange, onSortChange, setIsOpen }) {
   const selectStyle =
-    "px-4 py-2 rounded-lg bg-dark-bg text-white border border-dark-border shadow-sm outline-none hover:bg-dark-bg/90 focus:ring-2 focus:ring-blue-500 transition-all duration-150";
+    "px-4 py-2 rounded-lg bg-dark-bg text-white border border-dark-border shadow-sm outline-none hover:bg-dark-bg/90 cursor-pointer transition-all duration-150";
 
   return (
     <div className="flex flex-wrap gap-4 justify-between items-center mb-8 bg-light-bg p-4 rounded-xl border border-dark-border shadow">
+        <button 
+          onClick={() => setIsOpen(true)}
+          className="text-md text-blue-400 px-4 py-2 rounded-lg bg-dark-bg hover:bg-light-bg border border-light-border shadow-sm outline-none cursor-pointer"
+          >+ Add Task</button>
       <div className="flex flex-wrap gap-4 w-full md:w-auto">
+
         {/* Status Filter */}
         <select
           onChange={(e) => onFilterChange("status", e.target.value)}
