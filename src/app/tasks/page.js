@@ -145,7 +145,7 @@ export default function Tasks() {
     : "No tasks yet. Add one to get started.";
 
   return (
-    <div className="mx-auto w-[94%] max-w-5xl">
+    <div className="flex h-full min-h-0 w-full flex-col">
       {actionError && <p className="mb-4 text-sm text-rose-300">{actionError}</p>}
       <StatusColumn
         toolbar={

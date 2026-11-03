@@ -12,8 +12,9 @@ export default function AppNav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6">
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-3 rounded-2xl border border-light-border bg-light-bg px-4 py-3 shadow-custom-shadow backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
+    <header className="shrink-0">
+      <div className="mx-auto w-full max-w-5xl px-4 pt-4 sm:px-6">
+        <div className="flex w-full flex-col gap-3 rounded-2xl border border-light-border bg-light-bg px-4 py-3 shadow-custom-shadow backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
         <Link href="/" className="min-w-0">
           <p className="bg-gradient-to-r from-white via-cyan-100 to-teal-200 bg-clip-text text-lg font-semibold tracking-tight text-transparent">
             Productivity Hub
@@ -43,6 +44,7 @@ export default function AppNav() {
             );
           })}
         </nav>
+        </div>
       </div>
     </header>
   );

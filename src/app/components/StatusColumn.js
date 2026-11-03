@@ -12,9 +12,9 @@ export default function StatusColumn({
   deletingId,
 }) {
   return (
-    <div className="rounded-xl border border-dark-border bg-dark-bg p-4">
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-dark-border bg-dark-bg p-4">
       {toolbar}
-      <div className="scrollbar-custom mt-4 max-h-[calc(100vh-15rem)] overflow-y-auto pr-1">
+      <div className="scrollbar-custom mt-4 min-h-0 flex-1 overflow-y-auto pr-1">
         {loading ? (
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="h-28 animate-pulse rounded-xl border border-white/10 bg-white/5" />

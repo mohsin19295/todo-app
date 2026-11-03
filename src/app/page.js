@@ -4,7 +4,7 @@ import { buttonClass } from './components/ui';
 
 export default function Home() {
   return (
-      <div className="border border-light-border bg-light-bg shadow-custom-shadow w-[94%] max-w-[500px] h-auto p-6 rounded-xl backdrop-blur-sm transition-all duration-300 text-center space-y-6">
+      <div className="mx-auto w-full max-w-lg space-y-6 rounded-xl border border-light-border bg-light-bg p-6 text-center shadow-custom-shadow backdrop-blur-sm">
         <h1 className="text-2xl font-bold">Welcome to Your Productivity Hub</h1>
         <p className="text-sm opacity-80">
           Choose between quick Todos for simple tasks or dive into full-featured Task Management with priorities, statuses, and deadlines.
