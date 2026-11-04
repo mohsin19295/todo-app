@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI || process.env.NEXT_PUBLIC_MONGO_URI;
-
-if (!MONGO_URI) throw new Error("MONGO_URI is missing...");
 let isConnected = false;
 
 export const dbConnet = async () => {
     if(isConnected) return;
+
+    const MONGO_URI = process.env.MONGO_URI || process.env.NEXT_PUBLIC_MONGO_URI;
+    if (!MONGO_URI) throw new Error("MONGO_URI is missing...");
 
     try {
         await mongoose.connect(MONGO_URI, {
